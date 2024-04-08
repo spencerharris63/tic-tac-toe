@@ -1,4 +1,5 @@
 import random
+import os
 
 game_is_active = True
 
