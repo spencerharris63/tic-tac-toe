@@ -44,9 +44,20 @@ def is_draw():
 
 
 while game_is_active:
+    valid_input = [0, 1, 2]
     print_board(board)
-    user_row = int(input("Choose a Row 0-2: "))
-    user_column = int(input("Choose a Column 0-2: "))
+
+    while True:  # Start of new loop for input validation
+        user_row = int(input("Choose a Row 0-2: "))
+        user_column = int(input("Choose a Column 0-2: "))
+
+        # Check if input is valid
+        if user_row not in valid_input or user_column not in valid_input:
+            print("Invalid input, only use 0-2")
+            continue  # This will skip the rest of the loop and start it over, asking for input again
+        else:
+            break  # Valid input received, break out of the input validation loop
+
     # Check if move is valid
     if board[user_row][user_column] == ' ':
         board[user_row][user_column] = 'X'
@@ -61,7 +72,6 @@ while game_is_active:
             break
     else:
         print("That spot is already taken, please choose another")
-        continue
 
     # Computers turn
     while True:
